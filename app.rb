@@ -17,13 +17,15 @@ class Battle < Sinatra::Base
   get '/play' do
     @player1 = $player1.player_name
     @player2 = $player2.player_name
+    @hp = $player2.hit_points
     erb :play
   end
 
   get '/attack' do
     @player1 = $player1.player_name
     @player2 = $player2.player_name
-    erb :attack
+    @hp = $player2.subtract_hit_points
+    redirect '/play'
   end
 
   run! if app_file == $0
