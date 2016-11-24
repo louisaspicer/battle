@@ -1,10 +1,10 @@
-"Player 1: <%=@game.player1_name%>, Player 2: <%=@game.player2_name%>"<br>
+Player 1: <%=@game.player1_name%>, Player 2: <%=@game.player2_name%><br>
 
-"<%=@game.player2_name%>: <%=@game.player2_hit_points%>/100 HP"<br>
+<%=@game.player2_name%>: <%=@game.player2_hit_points%>/100 HP<br>
 
-"<%=@game.player1_name%>: <%=@game.player1_hit_points%>/100 HP"<br>
+<%=@game.player1_name%>: <%=@game.player1_hit_points%>/100 HP<br>
 
-"<%=@game.turn%>'s turn:"<br>
+<%=@game.turn%>'s turn:<br>
 
 <form action="/attack" method="post">
   <input type="submit" value="ATTACK!">
@@ -15,5 +15,7 @@
 <% elsif @game.confirm_attack == "#{@game.player2_name} has attacked #{@game.player1_name}!"%>
   <h1><%=@game.confirm_attack%></h1>
 <% else %>
-  <%=""%>
+  <h2><%=@game.player1_name%> is first up to battle!</h2>
 <% end %>
+
+<%=@game.is_game_over?%>

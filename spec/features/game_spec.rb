@@ -72,4 +72,17 @@ describe Game do
     end
   end
 
+  context "Losing a game" do
+    it "lost should be true if a player reaches 0 HPs" do
+      allow(player1).to receive(:hit_points) {0}
+      game.is_game_over?
+      expect(game.lost).to eq true
+    end
+
+    it "should confirm with a message if game is over" do
+      allow(player1).to receive(:hit_points) {0}
+      expect(game.is_game_over?).to eq "#{game.player1_name} has no hit points left! #{game.player2_name} wins!"
+    end
+  end
+
 end
