@@ -1,5 +1,7 @@
-"Player 1: <%=@player1%>, Player 2: <%=@player2%>"<br>
+"Player 1: <%=@game.player1_name%>, Player 2: <%=@game.player2_name%>"<br>
 
-"<%=@player2%>: <%=@hp%>/100 HP"
+"<%=@game.player2_name%>: <%=@game.player2_hit_points%>/100 HP"<br>
 
-<a href='/attack'>Attack!!!</a>
+"<%=@game.player1_name%>: <%=@game.player1_hit_points%>/100 HP"<br>
+
+"<%=@game.turn%>'s turn:" <a href='/attack'>Attack!!!</a>

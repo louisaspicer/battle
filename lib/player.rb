@@ -7,7 +7,8 @@ attr_reader :player_name, :hit_points
     @hit_points = 100
   end
 
-  def subtract_hit_points
+  def receive_damage
     @hit_points -= 10
   end
+
 end
