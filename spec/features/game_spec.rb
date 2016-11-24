@@ -24,10 +24,31 @@ describe Game do
     end
   end
 
+  context "#initializing" do
+    it "should start off as Player 1's turn" do
+      expect(game.turn).to eq player1.player_name
+    end
+  end
+
   context "Attacking a player" do
     it "should subtract hit points from player after an attack" do
       expect(player2).to receive(:receive_damage)
       game.attack
+    end
+
+    it "should update confirm_attack when attack is used" do
+      message = "#{game.player1_name} has attacked #{game.player2_name}!"
+      allow(player2).to receive(:receive_damage)
+      expect{game.attack}.to change{game.confirm_attack}.from(nil).to(message)
+    end
+
+    it "should update confirm_attack after second player attacks" do
+      old_message = "#{game.player1_name} has attacked #{game.player2_name}!"
+      new_message = "#{game.player2_name} has attacked #{game.player1_name}!"
+      allow(player1).to receive(:receive_damage)
+      allow(player2).to receive(:receive_damage)
+      game.attack
+      expect{game.attack}.to change{game.confirm_attack}.from(old_message).to(new_message)
     end
   end
 

@@ -18,7 +18,7 @@ class Battle < Sinatra::Base
     erb :play
   end
 
-  get '/attack' do
+  post '/attack' do
     $game.attack
     redirect '/play'
   end

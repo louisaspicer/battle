@@ -7,13 +7,11 @@ feature "Battle", :type => :feature do
   end
 
   scenario "Should see that it's player 1's turn" do
-    #sign_in_and_play
     expect(page).to have_content("Tudor's turn:")
   end
 
   scenario "Should switch turns after Player 1's turn" do
-    #sign_in_and_play
-    click_link('Attack!!!')
+    click_button('ATTACK!')
     expect(page).to have_content("Louisa's turn:")
   end
 

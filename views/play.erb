@@ -4,4 +4,16 @@
 
 "<%=@game.player1_name%>: <%=@game.player1_hit_points%>/100 HP"<br>
 
-"<%=@game.turn%>'s turn:" <a href='/attack'>Attack!!!</a>
+"<%=@game.turn%>'s turn:"<br>
+
+<form action="/attack" method="post">
+  <input type="submit" value="ATTACK!">
+</form>
+
+<% if @game.confirm_attack == "#{@game.player1_name} has attacked #{@game.player2_name}!" %>
+  <h1><%=@game.confirm_attack%></h1>
+<% elsif @game.confirm_attack == "#{@game.player2_name} has attacked #{@game.player1_name}!"%>
+  <h1><%=@game.confirm_attack%></h1>
+<% else %>
+  <%=""%>
+<% end %>
